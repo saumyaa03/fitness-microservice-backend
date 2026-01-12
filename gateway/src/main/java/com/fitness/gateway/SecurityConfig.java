@@ -15,8 +15,10 @@ public class SecurityConfig {
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         return http
                 .csrf(ServerHttpSecurity.CsrfSpec::disable) // csrf token not needed
-                .authorizeExchange(exchange -> exchange.anyExchange().authenticated())
-                .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults())) // This backend service is a Resource Server that uses JWT tokens for authentication
+                .authorizeExchange(exchange -> exchange
+                        .anyExchange().authenticated())
+                .oauth2ResourceServer(oauth2 -> oauth2
+                        .jwt(Customizer.withDefaults())) // Enable JWT validation, and automatically discover where to get the signing keys (JWK Set URI) from my application properties
                 .build();
     }
 }
