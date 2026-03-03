@@ -36,7 +36,7 @@ public class UserService {
         // 1. Map request → entity
         User user = new User();
         user.setEmail(request.getEmail());
-        user.setKeycloakId(request.getKeycloakId());
+//        user.setKeycloakId(request.getKeycloakId());
         user.setFirstName(request.getFirstName());
         user.setLastName(request.getLastName());
         user.setPassword(request.getPassword()); // TODO: encode later
